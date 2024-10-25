@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2021 The Nusantara Project ROM
+     Copyright (C) 2016-2021 crDroid Android Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,108 +14,140 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- QS System Info -->
-    <string name="config_sysCPUTemp">/sys/class/thermal/thermal_zone0/temp</string>
-    <string name="config_sysBatteryTemp">/sys/class/power_supply/battery/temp</string>
-    <string name="config_sysGPUFreq">/sys/kernel/gpu/gpu_clock</string>
-    <string name="config_sysGPULoad">/sys/kernel/gpu/gpu_busy</string>
-    <integer name="config_sysCPUTempMultiplier">1000</integer>
-    <integer name="config_sysBatteryTempMultiplier">10</integer>
+<resources>
 
-    <!-- Whether to artificially interpret all signal strengths as
-         one bar higher than they actually are -->
-    <bool name="config_inflateSignalStrength">true</bool>
+    <!-- Name of a font family to use as light font. For theming purpose. -->
+    <string name="config_lightFontFamily" translatable="false">sans-serif-light</string>
 
-    <!-- Whether device ignores the RSSNR signal implementation -->
-    <bool name="config_ignoreRssnrSignalLevel">true</bool>
+    <!-- Name of a font family to use as regular font. For theming purpose. -->
+    <string name="config_regularFontFamily" translatable="false">sans-serif-regular</string>
 
-    <!-- Flag indicating whether the surface flinger has limited
-         alpha compositing functionality in hardware.  If set, the window
-         manager will disable alpha trasformation in animations where not
-         strictly needed. -->
-    <bool name="config_sf_limitedAlpha">true</bool>
+    <!-- Whether device has dash charging support -->
+    <bool name="config_hasDashCharger">false</bool>
 
-    <!-- Enables or disables fading edges when marquee is enabled in TextView.
-         Off by default, since the framebuffer readback used to implement the
-         fading edges is prohibitively expensive on most GPUs. -->
-    <bool name="config_ui_enableFadingMarquee">true</bool>
+    <!-- Whether device has warp charging support -->
+    <bool name="config_hasWarpCharger">false</bool>
 
-    <!-- If Adaptive charging supported by kernel and device sepolicy -->
-    <bool name="config_adaptiveChargingAvailable">true</bool>
+    <!-- Whether device has VOOC charging support -->
+    <bool name="config_hasVoocCharger">false</bool>
 
-    <!-- Adaptive charge sysfs node and value for suspend/resume charging-->
-    <string name="config_adaptiveChargingSysfsNode" translatable="false">/sys/class/power_supply/battery/input_suspend</string>
-    <string name="config_adaptiveChargingSuspendValue" translatable="false">1</string>
-    <string name="config_adaptiveChargingResumeValue" translatable="false">0</string>
+    <!-- Smart charging -->
+    <bool name="config_smartChargingAvailable">true</bool>
+    <integer name="config_smartChargingBatteryLevel">80</integer>
+    <integer name="config_smartChargingBatteryResumeLevel">60</integer>
+    <string name="config_smartChargingSysfsNode" translatable="false">/sys/class/power_supply/battery/charging_enabled</string>
+    <string name="config_smartChargingSuspendValue" translatable="false">0</string>
+    <string name="config_smartChargingResumeValue" translatable="false">1</string>
 
-    <!-- Show the network traffic monitor on statusbar even if the device has a notch -->
-    <bool name="config_forceShowNetworkTrafficOnStatusBar">true</bool>
+    <!-- Defines the sysfs attribute path used by pocket bridge
+         to communicate pocket state to the pocket judge kernel driver. -->
+    <string name="config_pocketBridgeSysfsInpocket"></string>
 
-    <!-- Whether or not we should show vendor mismatch message -->
-    <bool name="config_show_vendor_mismatch_message">false</bool>
+    <!-- Pocket Lock -->
+    <bool name="config_pocketModeSupported">false</bool>
+    <bool name="config_pocketUseLightSensor">false</bool>
 
-    <!-- Should we filter any display modes which are unampped? -->
-    <bool name="config_filterDisplayModes">true</bool>
+    <!-- Defines custom OEM sensor for pocket detection. -->
+    <string name="config_pocketJudgeVendorSensorName"></string>
+    <string name="config_pocketJudgeVendorProximitySensorName"></string>
 
-    <!-- Display mode remapping table.
-         If the mode names returned by the backend do not match
-         the predefined and translated strings in the Settings
-         app, they can be remapped here. The format is
-         "oldname:newname", one per entry. -->
-    <string-array name="config_displayModeMappings" translatable="false">
-        <item>A_Standard:standard</item>
-        <item>B_Warm mode:reading</item>
-        <item>D_Cold mode:dynamic</item>
+    <!-- Whether the device supports Smart Pixels -->
+    <bool name="config_supportSmartPixels">true</bool>
+
+    <!-- Whether to use old mobile type icons as default -->
+    <bool name="config_useOldMobileIcons">false</bool>
+
+    <!-- Whether device supports sensor based doze customizations -->
+    <bool name="config_dozePulseTilt">false</bool>
+    <bool name="config_dozePulseProximity">false</bool>
+    <bool name="config_deviceHaveWakeUpProximity">false</bool>
+
+    <!-- Whether doze feature is enabled by default in settings -->
+    <bool name="config_doze_enabled_by_default">false</bool>
+
+    <!-- Whether to show a custom view for FOD -->
+    <bool name="config_needCustomFODView">false</bool>
+
+    <!-- Default fod pressed color -->
+    <integer name="config_fod_pressed_color">1</integer>
+    
+    <!-- NightLight FOD -->
+    <bool name="disable_fod_night_light">false</bool>
+
+    <!-- Default value for FOD animation package resources -->
+    <string name="config_fodAnimationPackage" translatable="false">com.crdroid.fod.animations</string>
+
+    <!-- Whether device has physical tri state switch -->
+    <bool name="config_hasAlertSlider">false</bool>
+
+	<!-- The location of the devices physical tri state switch
+         0: Left side
+         1: Right side -->
+    <integer name="config_alertSliderLocation">0</integer>
+
+    <!-- Whether key handler sends intent when changing slider position -->
+    <string name="config_alertSliderIntent"></string>
+
+    <!-- Any package that has one of the package names defined below will be prevented
+         from using specific sensors in order to stop battery drain -->
+    <string-array name="config_blockPackagesSensorDrain">
+        <item>com.whatsapp</item>
+        <item>com.gbwhatsapp</item>
+        <item>com.yowhatsapp</item>
+        <item>com.whatsapp.plus</item>
+        <item>org.telegram.messenger</item>
+        <item>org.telegram.messenger.plus</item>
+        <item>com.netease.cloudmusic</item>
+        <item>fm.xiami.main</item>
+        <item>com.tencent.weread</item>
+        <item>com.netease.snailread</item>
+        <item>com.tencent.mm</item>
+        <item>com.baidu.browser.apps</item>
+        <item>com.tencent.tim</item>
+        <item>com.tencent.ig</item>
+        <item>org.thunderdog.challegram</item>
+        <item>com.snapchat.android</item>
+        <item>com.facebook.orca</item>
+        <item>com.Slack</item>
+        <item>tugapower.codeaurora.browser</item>
+        <item>org.mozilla.firefox</item>
+        <item>com.android.chrome</item>
+        <item>com.amazon.mShop.android.shopping</item>
+        <item>com.google.android.inputmethod.latin</item>
+        <item>com.google.android.apps.plus</item>
+        <item>com.google.android.apps.maps</item>
+        <item>ru.ok.android</item>
+        <item>com.instagram.android.MainTabActivity</item>
+        <item>com.facebook.orca</item>
+        <item>com.facebook.orca.StartScreenActivity</item>
+        <item>com.spotify.music</item>
+        <item>com.spotify.music.MainActivity</item>
+        <item>com.android.vending</item>
+        <item>com.trtf.blue</item>
+        <item>com.truecaller</item>
+        <item>com.gaana</item>
+        <item>com.facebook.katana.LoginActivity</item>
     </string-array>
 
-    <!-- Does the battery LED support multiple colors?
-         Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">false</bool>
+    <!-- Enable face auth only when swiping security view -->
+    <bool name="config_faceAuthOnlyOnSecurityView">false</bool>
 
-    <!-- The max scale for the wallpaper when it's zoomed in -->
-    <item name="config_wallpaperMaxScale" format="float" type="dimen">1</item>
+    <!-- Path to fast charging status file to detect whether an oem fast charger is active -->
+    <string name="config_oemFastChargerStatusPath" translatable="false"></string>
 
-    <!-- If this is true, device supports Sustained Performance Mode. -->
-    <bool name="config_sustainedPerformanceModeSupported">true</bool>
+    <!-- Path to fast charging status file to detect whether an oem fast charger is active -->
+    <string name="config_oemFastChargerStatusPath2" translatable="false"></string>
 
-    <!-- Whether the always on display mode is available. -->
-    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+    <!-- Expected value from fast charging status file  -->
+    <string name="config_oemFastChargerStatusValue" translatable="false"></string>
 
-    <!-- Control whether the always on display mode is enabled by default. This value will be used
-         during initialization when the setting is still null. -->
-    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+    <!-- OnePlus uses a proprietary vibrator hal to utilize the new powerful motor since the
+         OnePlus 7 Pro. -->
+    <bool name="config_hasOnePlusHapticMotor">false</bool>
 
-    <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
-    <bool name="config_displayBlanksAfterDoze">false</bool>
+    <!-- Whether to show settings for hiding notch fill -->
+    <bool name="config_showHideNotchSettings">true</bool>
 
-    <!-- The list of components which should be automatically disabled for a specific device. -->
-    <string-array name="config_deviceDisabledComponents" translatable="false">
-        <item>com.google.android.gms/com.google.android.gms.nearby.messages.service.NearbyMessagesService</item>
-        <item>com.google.android.gms/com.google.android.gms.nearby.discovery.service.DiscoveryService</item>
-    </string-array>
-
-    <!-- Flag indicating whether the surface flinger is inefficient
-         at performing a blur.  Used by parts of the UI to turn off
-         the blur effect where it isn't worth the performance hit.
-         As of Honeycomb, blurring is not supported anymore. -->
-    <bool name="config_sf_slowBlur">false</bool>
-
-    <!-- Whether device supports gaming mode profiles -->
-    <bool name="config_gamingmode_performance">true</bool>
-
-    <!-- Default value for led color when battery is fully charged -->
-    <integer name="config_notificationsBatteryFullARGB">0xFF00FF00</integer>
-
-    <!-- Default value for led color when battery is low on charge -->
-    <integer name="config_notificationsBatteryLowARGB">0xFFFF0000</integer>
-
-    <!-- Default value for led color when battery is medium charged -->
-    <integer name="config_notificationsBatteryMediumARGB">0xFFFFFF00</integer>
-
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">true</bool>
-
-    <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
-    <integer name="config_screenRecorderMaxFramerate">60</integer>
+    <!-- Alter build parameters for avoiding hardware attestation enforcement -->
+    <string-array name="config_spoofBuildGms" translatable="false"></string-array>
 </resources>

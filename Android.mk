@@ -18,6 +18,34 @@ LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_DEVICE),onclite)
 
+# Remova os aplicativos que deseja excluir da compilação aqui
+LOCAL_OVERRIDES_PACKAGES := \
+    OmniJaws \
+    PhotoTable \
+    Basic \
+    BasicDreams \
+    CellBroadcastApp \
+    CellBroadcastReceiver \
+    HealthFitness \
+    Jelly \
+    QuickSearchBox \
+    Updater \
+    Stk \
+    SettingsIntelligence \
+    OmniStyle \
+    Music \
+    Eleven \
+    Etar \
+    CellBroadcastService \
+    CellBroadcastLegacyApp \
+    GameSpace \
+    Jelly \
+    HTMLViewer \
+    Gallery2 \
+    FMRadio \
+    DeskClock \
+    CellBroadcastReceiver \
+
 subdir_makefiles=$(call first-makefiles-under,$(LOCAL_PATH))
 $(foreach mk,$(subdir_makefiles),$(info including $(mk) ...)$(eval include $(mk)))
 
@@ -138,3 +166,5 @@ $(EGL_64_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 ALL_DEFAULT_INSTALLED_MODULES += $(EGL_32_SYMLINKS) $(EGL_64_SYMLINKS)
 
 endif
+
+

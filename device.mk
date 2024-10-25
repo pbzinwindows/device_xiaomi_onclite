@@ -16,9 +16,15 @@
 
 $(call inherit-product, vendor/xiaomi/onclite/onclite-vendor.mk)
 
+PRODUCT_SOONG_NAMESPACES += hardware/xiaomi
+
+# dummy app to override unwanted packages
+PRODUCT_PACKAGES += \
+overrides
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-nad
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
@@ -539,5 +545,5 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Blur
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.sf.blurs_are_expensive=0 \
-    ro.surface_flinger.supports_background_blur=0
+    ro.sf.blurs_are_expensive=1 \
+    ro.surface_flinger.supports_background_blur=1

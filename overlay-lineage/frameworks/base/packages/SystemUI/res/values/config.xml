@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2021 The Nusantara Project ROM
+     Copyright (C) 2016-2021 crDroid Android Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,6 +15,45 @@
      limitations under the License.
 -->
 <resources>
-    <!-- FPS Info -->
-    <string name="config_fpsInfoSysNode" translatable="false">/sys/devices/virtual/graphics/fb0/measured_fps</string>
+
+    <!-- Default no. of QS tile rows and columns -->
+    <integer name="config_qs_columns_portrait">4</integer>
+    <integer name="config_qs_rows_portrait">2</integer>
+    <integer name="config_qs_columns_landscape">5</integer>
+    <integer name="config_qs_rows_landscape">1</integer>
+
+    <!-- Allow devices override audio panel location to the left side -->
+    <bool name="config_audioPanelOnLeftSide">false</bool>
+
+    <!-- The CPU temperature sensor path, defaults to empty -->
+    <string name="config_cpuTempSensor" translatable="false">/sys/class/thermal/thermal_zone0/temp</string>
+
+    <!-- The CPU temperature divider, if needed -->
+    <integer name="config_cpuTempDivider" translatable="false">1</integer>
+
+    <!-- The CPUs to display in CPUInfoService view -->
+    <string name="config_displayCpus" translatable="false"></string>
+
+    <!-- FPSInfoService FPS node file path -->
+    <string name="config_fpsInfoSysNode" translatable="false"></string>
+
+    <!-- Whether to use the mask for the quicksettings icons-->
+    <bool name="config_useMaskForQs">true</bool>
+
+    <!-- Config to enable/disable qs tile tinting -->
+    <bool name="config_enable_qs_tile_tinting">false</bool>
+    
+    <!-- Whether to disable assist hint on lockscreen -->
+    <bool name="config_disableAssistHintOnLockscreen">true</bool>
+
+    <!-- Burn in protection -->
+    <bool name="config_statusBarBurnInProtection">true</bool>
+    <integer name="config_shift_interval">60</integer>
+
+    <!-- On-The-Go -->
+    <integer name="quick_settings_onthego_dialog_short_timeout">3000</integer>
+    <integer name="quick_settings_onthego_dialog_long_timeout">6000</integer>
+
+    <!-- FPS measure interval in milliseconds, default 1000 -->
+    <integer name="config_fpsReadInterval">1000</integer>
 </resources>

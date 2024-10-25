@@ -12,31 +12,21 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 # Inherit from device side
 $(call inherit-product, device/xiaomi/onclite/device.mk)
 
-# Inherit some common Nusantara stuff.
-$(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
+# Inherit some common Lineage stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+-include vendor/lineage-priv/keys/keys.mk
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := nad_onclite
+PRODUCT_NAME := lineage_onclite
 PRODUCT_DEVICE := onclite
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi 7
 PRODUCT_MANUFACTURER := Xiaomi
 
-# Nusantara
-NAD_BUILD_TYPE := OFFICIAL
 
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED := true
 
-# Pixel Charging
-USE_PIXEL_CHARGING := true
-
-# GApps
-ifeq ($(USE_GAPPS),true)
-USE_AOSP_CLOCK := true
-PRODUCT_PACKAGES += \
-    GAppsExclude
-endif
 
 # Blur
-TARGET_USES_BLUR := false
+TARGET_USES_BLUR := true
